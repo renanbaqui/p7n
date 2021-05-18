@@ -40,10 +40,13 @@ public class Usuario extends Pessoa
     
     public String toString()
     {
+        
         return  super.toString() + "\n" +
                 "Endereco: " + this.endereco + "\n" + 
                 "Codigo: "+ this.codigoUsuario + "\n" +
-                "Historico: " + "\n" + this.historico;
+                "Historico: " + "\n" + 
+                //this.historico.get(0);
+                Arrays.toString(this.historico.toArray());
     }
     
 }

@@ -23,6 +23,17 @@ public class Livro
         this.tituloLivro = t;
     }
     
+    public String getCodigoLivro(){ return this.codigoLivro; }
+    
+    public String getTituloLivro(){ return this.tituloLivro; }
+    
+    public String getCategoria(){ return this.categoria; }
+    
+    public int getQuantidade(){ return this.quantidade; }
+    
+    public int getEmprestados(){ return this.emprestados; }
+    
+    
     public void add(EmprestadoPara e)    // metodo para adicionar objetos ao ArrayList interno    
     {
         this.historico.add(e);
@@ -59,5 +70,6 @@ public class Livro
                 "Quantidade: " + this.quantidade + "\n" +
                 "Emprestados: "+ this.emprestados + "\n" +
                 "Historico: " + "\n" + this.historico;
+               // Arrays.toString(this.historico;.toArray());
     }
 }
