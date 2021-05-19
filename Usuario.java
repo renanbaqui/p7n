@@ -29,12 +29,13 @@ public class Usuario extends Pessoa
     
     public int getCodigoUsuario(){ return this.codigoUsuario; }
     
+    public ArrayList<Emprestimo> getHistorico(){ return this.historico; }
     
     // recebe a data de locação e o código do Livro emprestado
     // cria um objeto Empréstimo com estas informações e adiciona o mesmo no Histórico.
-    public void addLivroHist(int anoE, int mesE, int diaE, int anoD, int mesD, int diaD, int c)
+    public void addLivroHist(int anoE, int mesE, int diaE)
     {
-        Emprestimo objeto = new Emprestimo(anoE, mesE, diaE, anoD, mesD, diaD, c);
+        Emprestimo objeto = new Emprestimo(anoE, mesE, diaE, 1822, 9, 7, 10);   // VERIFICAR!
         add(objeto);
     }
     

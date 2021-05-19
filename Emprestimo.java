@@ -12,6 +12,11 @@ public class Emprestimo
         this.codigoLivro = c;
     }
     
+    /*Emprestimo(int anoE, int mesE, int diaE)  // VERIFICAR!
+    {
+        this.dataEmprestimo = new GregorianCalendar(anoE, mesE, diaE);
+    }*/
+    
     
     public String toString()
     {

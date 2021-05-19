@@ -1,4 +1,20 @@
 import java.util.*;
+import java.lang.*;
+
+
+class CopiaNaoDisponivelEx 
+  extends RuntimeException {
+    public CopiaNaoDisponivelEx(String errorMessage) {
+        super(errorMessage);
+    }
+}
+
+class NenhumaCopiaEmprestadaEx 
+  extends RuntimeException {
+    public NenhumaCopiaEmprestadaEx(String errorMessage) {
+        super(errorMessage);
+    }
+}
 
 public class Livro
 {
@@ -33,6 +49,7 @@ public class Livro
     
     public int getEmprestados(){ return this.emprestados; }
     
+    public ArrayList<EmprestadoPara> getHistorico(){ return this.historico; }
     
     public void add(EmprestadoPara e)    // metodo para adicionar objetos ao ArrayList interno    
     {
@@ -44,16 +61,24 @@ public class Livro
         return this.historico.get(i);
     }
     
+    // empresta, que não recebe parâmetros e acerta o campo Emprestados. Caso todas as cópias estejam emprestadas,
+    // deve levantar a exceção confirmada CopiaNaoDisponivelEx - OK!
     public void empresta()
     {
-        // empresta, que não recebe parâmetros e acerta o campo Emprestados. Caso todas as cópias estejam emprestadas,
-        // deve levantar a exceção confirmada CopiaNaoDisponivelEx
+        if (this.quantidade == this.emprestados)
+        {
+            throw new CopiaNaoDisponivelEx("Todas as copias estao emprestadas.");
+        }
     }
     
+    // devolve, que não recebe parâmetros e acerta o campo Emprestados. Caso nenhuma cópia tenha sido emprestada,
+    // deve levantar a exceção NenhumaCopiaEmprestadaEx
     public void devolve()
     {
-        // devolve, que não recebe parâmetros e acerta o campo Emprestados. Caso nenhuma cópia tenha sido emprestada,
-        // deve levantar a exceção NenhumaCopiaEmprestadaEx
+        if (this.emprestados == 0)
+        {
+            throw new NenhumaCopiaEmprestadaEx("Nenhuma copia emprestada.");
+        }
     }
     
     public void addUsuarioHist(int anoE, int mesE, int diaE, int anoD, int mesD, int diaD, int c)
