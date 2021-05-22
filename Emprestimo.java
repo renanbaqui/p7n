@@ -3,20 +3,14 @@ import java.util.*;
 public class Emprestimo
 {
      GregorianCalendar dataEmprestimo, dataDevolucao;
-     int codigoLivro;
+     String codigoLivro;
      
-    Emprestimo(int anoE, int mesE, int diaE, int anoD, int mesD, int diaD, int c)
+    Emprestimo(int anoE, int mesE, int diaE, int anoD, int mesD, int diaD, String c)
     {
         this.dataEmprestimo = new GregorianCalendar(anoE, mesE, diaE);
         this.dataDevolucao = new GregorianCalendar(anoD, mesD, diaD);
         this.codigoLivro = c;
     }
-    
-    /*Emprestimo(int anoE, int mesE, int diaE)  // VERIFICAR!
-    {
-        this.dataEmprestimo = new GregorianCalendar(anoE, mesE, diaE);
-    }*/
-    
     
     public String toString()
     {

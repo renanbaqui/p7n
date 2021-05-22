@@ -60,38 +60,71 @@ public class Biblioteca
     // salvaArquivo: de retorno void, recebe como parâmetros um objeto da classe Hashtable 
     // (que pode ser o cadastro de usuários ou o acervo de livros) e um objeto da classe 
     // String contendo o nome do arquivo onde o outro parâmetro será salvo
-    public void salvaArquivo(Hashtable obj, String n)
+    public void salvaArquivoU(Hashtable<Integer, Usuario> c, String n) // salvaArquivo dos Usuarios // - OK!
     {
-        
+        try {
+            FileWriter myWriter = new FileWriter(n);
+            myWriter.write(c.toString());
+            myWriter.close();
+            System.out.println("Escreveu no arquivo com sucesso.");
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro na escrita do arquivo.");
+            e.printStackTrace();
+        }
+    }
+    
+    public void salvaArquivoL(Hashtable<String, Livro> c, String n) // salvaArquivo dos Livros  // PARCIALMENTE OK! 
+    {                                                                                           // deveria ser mesmo nome salvaArquivo
+        try {
+            FileWriter myWriter = new FileWriter(n);
+            //myWriter.write("Files in Java might be tricky, but it is fun enough!");
+            myWriter.write(c.toString());
+            myWriter.close();
+            System.out.println("Escreveu no arquivo com sucesso.");
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro na escrita do arquivo.");
+            e.printStackTrace();
+        }
     }
     
     // lêArquivo: de retorno void, recebe como parâmetros um objeto da classe String contendo o 
     // nome do arquivo a ser lido (como o construtor, mas que pode ser chamado a qualquer hora, 
-    // e lê somente o acervo de livros ou o cadastro de usuários);
+    // e lê somente o acervo de livros ou o cadastro de usuários); - PARCIALMENTE OK - Lê o arquivo todo, não somente o acervo ou cadastro
     public void leArquivo(String n)
     {
-       
+        try {
+            File myObj = new File(n);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();  // cria string 'data' e salva o conteudo do arquivo nele
+            System.out.println(data);           // imprime o conteudo do string para conferencia
+          }
+          myReader.close();
+        } catch (FileNotFoundException e) {
+          System.out.println("Ocorreu um erro na leitura do arquivo.");
+          e.printStackTrace();
+        }
     }
     // emprestaLivro: recebe como parâmetros a referência a um objeto Usuário e a referência a um 
     // objeto da classe Livro. (as referências já devem ter sido validadas – obtidas através dos métodos 
     // getLivro e getUsuário – veja observação abaixo). Chama o método empresta no objeto Livro e atualiza 
     // o histórico no objeto Usuário chamando addLivroHist. A data do empréstimo é obtida consultando o 
-    // relógio/calendário do sistema no momento da operação; - PARCIALMENTE OK!
+    // relógio/calendário do sistema no momento da operação; - PARCIALMENTE OK! - Data de devolucao arbitraria
     public void emprestaLivro(Usuario u, Livro l)
     {
         l.empresta();
-        u.addLivroHist(cal.get(Calendar.YEAR), (cal.get(Calendar.MONTH)+1), cal.get(Calendar.DAY_OF_MONTH));
-        System.out.println(cal.get(Calendar.YEAR)+" " +(cal.get(Calendar.MONTH)+1)+" "+cal.get(Calendar.DAY_OF_MONTH));
+        u.addLivroHist(cal.get(Calendar.YEAR), (cal.get(Calendar.MONTH)+1), cal.get(Calendar.DAY_OF_MONTH), 2022, 1, 1, l.codigoLivro);
+        //System.out.println(cal.get(Calendar.YEAR)+" " +(cal.get(Calendar.MONTH)+1)+" "+cal.get(Calendar.DAY_OF_MONTH));
     }
     
     
     // devolveLivro: o mesmo definido para o método anterior, só que chama o método devolve no 
     // objeto Livro. Aqui, no entanto, se você implementou a personalização direito, pode ser 
     // verificado se o usuário está devolvendo o livro com atraso e avisar de uma multa;
-    public void devolveLivro(Usuario u, Livro l)
+    public void devolveLivro(Usuario u, Livro l) // - PARCIALMENTE OK! Como acessar Emprestimo.dataDevolucao?
     {
        l.devolve();
-       
+       //u.addLivroHist(cal.get(Calendar.YEAR), (cal.get(Calendar.MONTH)+1), cal.get(Calendar.DAY_OF_MONTH));
     }
     
     // String imprimeLivros(): Devolve uma string com a lista de livros cadastrados, ordenados pelo título; - OK!

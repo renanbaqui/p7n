@@ -1,0 +1,19 @@
+{ABC=Codigo do Livro: ABC
+Titulo do Livro: Os Ventos
+Categoria: Romance
+Quantidade: 2
+Emprestados: 1
+Historico: 
+[Data de Emprestimo: 10/1/2010
+Data de Devolucao: 7/2/2011
+Codigo do Livro: 19
+, Data de Emprestimo: 10/1/2018
+Data de Devolucao: 7/2/2019
+Codigo do Livro: 94
+], FGH=Codigo do Livro: FGH
+Titulo do Livro: As Nuvens
+Categoria: Horror
+Quantidade: 3
+Emprestados: 0
+Historico: 
+[]}

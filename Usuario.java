@@ -33,9 +33,9 @@ public class Usuario extends Pessoa
     
     // recebe a data de locação e o código do Livro emprestado
     // cria um objeto Empréstimo com estas informações e adiciona o mesmo no Histórico.
-    public void addLivroHist(int anoE, int mesE, int diaE)
+    public void addLivroHist(int anoE, int mesE, int diaE, int anoD, int mesD, int diaD, String c)
     {
-        Emprestimo objeto = new Emprestimo(anoE, mesE, diaE, 1822, 9, 7, 10);   // VERIFICAR!
+        Emprestimo objeto = new Emprestimo(anoE, mesE, diaE, anoD, mesD, diaD, c);   // VERIFICAR!
         add(objeto);
     }
     
